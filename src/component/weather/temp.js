@@ -3,15 +3,16 @@ import Weathercard from "./weathercard";
 import "./style.css";
 
 const Temp = () => {
-  const [searchValue, setSearchValue] = useState("pune");
+  const [searchValue, setSearchValue] = useState("searchValue");
   const [tempInfo, setTempInfo] = useState({});
 
   const getWeatherInfo = async () => {
     try {
-      let url = `https://api.openweathermap.org/data/2.5/weather?q={searchValue}&appid=4ece0e4b44fbf71c7a20286561299ae7`;
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=4ece0e4b44fbf71c7a20286561299ae7`;
 
       let res = await fetch(url);
       let data = await res.json();
+      console.log(data)
 
       const { temp, humidity, pressure } = data.main;
       const { main: weathermood } = data.weather[0];
